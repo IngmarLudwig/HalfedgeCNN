@@ -1,0 +1,15 @@
+# Network settings
+--pooling half_edge_pooling
+--feat_selection 1
+--nbh_size 5
+--fc_n 100
+
+# Data loader settings
+--num_threads 3
+
+# Weight initialization settings
+--init_type normal
+--init_gain 0.02
+
+# Segmentation base (if applicable)
+--segmentation_base edge_based

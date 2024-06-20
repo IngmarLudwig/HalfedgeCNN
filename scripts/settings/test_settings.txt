@@ -1,0 +1,3 @@
+# During testing, no augmentation is applied.
+--number_augmentations 1
+--phase test

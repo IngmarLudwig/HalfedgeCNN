@@ -1,0 +1,11 @@
+# Network architecture
+--arch mconvnet
+--ncf 64 128 256 256
+--resblocks 1
+
+# Batch size
+--batch_size 16
+
+# Normalization settings
+--norm group
+--num_groups 16

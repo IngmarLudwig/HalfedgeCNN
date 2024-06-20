@@ -1,0 +1,4 @@
+--dataset_mode segmentation
+--dataroot datasets/human_seg
+--name human_seg
+--number_input_faces 1520

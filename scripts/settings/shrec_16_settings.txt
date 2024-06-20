@@ -1,0 +1,5 @@
+--dataset_mode classification
+--dataroot datasets/shrec_16
+--name shrec_16
+--pool_res 1200 900 600 360
+--number_input_faces 500

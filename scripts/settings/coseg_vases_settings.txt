@@ -1,0 +1,4 @@
+--dataset_mode segmentation
+--dataroot datasets/coseg_vases
+--name coseg_vases
+--number_input_faces 1000

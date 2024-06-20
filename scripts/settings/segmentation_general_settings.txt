@@ -1,0 +1,13 @@
+# Network architecture
+--arch meshunet
+--ncf 32 64 128 256
+--pool_res 3600 2700 1200
+--resblocks 3
+
+# Batch size
+--batch_size 12
+
+# Normalization settings
+--norm batch
+
+

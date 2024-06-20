@@ -1,0 +1,17 @@
+# Learn rate settings
+--lr 0.0002
+--lr_policy lambda
+--lr_decay_iters 50
+--niter 100
+--niter_decay 100
+
+# Adam beta1
+--beta1 0.9
+
+# Data augmentation settings
+--number_augmentations 20
+--flip_edges 0.2
+--slide_verts 0.2
+
+# Number of models to create
+--number_of_runs 1
