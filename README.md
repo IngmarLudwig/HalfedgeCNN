@@ -1,9 +1,25 @@
 # HalfedgeCNN
 
-Version 1.0
+### Eurographics Symposium on Geometry Processing 2023
 
-Note: This code is based on a modification of the code from https://ranahanocka.github.io/MeshCNN/.
+HalfedgeCNN is a general-purpose deep neural network operating on 3D triangle meshes. Inspired by the edge-based [MeshCNN](https://ranahanocka.github.io/MeshCNN/) it includes convolution and (un)pooling layers, but operates on the basis of **halfedges**. This provides certain benefits over alternative that are formulated on the basis of edges, vertices, or faces.
 
+HalfedgeCNN is described in more detail in the below publication.
+
+# Citation
+
+If you find this code useful, please consider citing our paper
+```
+@article{HalfedgeCNN,
+author = {Ludwig, I. and Tyson, D. and Campen, M.},
+title = {HalfedgeCNN for Native and Flexible Deep Learning on Triangle Meshes},
+journal = {Computer Graphics Forum},
+volume = {42},
+number = {5},
+doi = {https://doi.org/10.1111/cgf.14898},
+year = {2023}
+}
+```
 
 # Getting Started
 
@@ -148,3 +164,8 @@ For Edge-Pooling the parameter has to be set to "edge_pooling".
 ### Change Segmentation Base
 Three different segmentation bases are available: edge based, half-edge based, and face based.
 For edge based segmentation the --segmentation_base parameter has to be set to "edge_based", for halfedge based segmentation to "half_edge_based", and for face based segmentation to "face_based".
+
+
+# Acknowledgments
+
+This code is based on a modification of the code of [MeshCNN](https://ranahanocka.github.io/MeshCNN/).
