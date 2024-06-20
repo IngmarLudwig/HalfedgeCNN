@@ -1,3 +1,6 @@
+<img src='images/halfedgecnn_image.png' align="right" width=500>
+<br><br><br>
+
 # HalfedgeCNN
 
 ### Eurographics Symposium on Geometry Processing 2023
