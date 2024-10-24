@@ -18,6 +18,24 @@ def get_mesh_data(file: str, opt):
     mesh_data = None
     if os.path.exists(path):
         mesh_data = np.load(path, encoding='latin1', allow_pickle=True)
+        
+        # Restore nested version of vertex_to_half_edges 
+        vertex_to_half_edges_flat=mesh_data['vertex_to_half_edges_flat']
+        length_list = mesh_data['vertex_to_half_edges_flat_length_list']
+
+        vertex_to_half_edges= []    
+        cnt=0
+        for length in length_list:
+            list_part = vertex_to_half_edges_flat[cnt: cnt+length]
+            vertex_to_half_edges.append(list_part.tolist())
+            cnt += length
+
+        mesh_data_dict = {}
+        for key in mesh_data:
+            mesh_data_dict[key] = mesh_data[key]
+        mesh_data = mesh_data_dict
+
+        mesh_data['vertex_to_half_edges'] = vertex_to_half_edges
     else:
         mesh_data = from_scratch(file, opt)
         save_mesh_data(path, mesh_data)
@@ -42,6 +60,14 @@ def get_random_mesh_path(file: str, number_augmentations: int):
 
 
 def save_mesh_data(load_path, mesh_data):
+
+    # Create non-nested version of vertex_to_half_edges to be able to store as NPZ-File
+    vertex_to_half_edges_flat = []
+    length_list = []
+    for xs in mesh_data.vertex_to_half_edges:
+        vertex_to_half_edges_flat.extend(xs)
+        length_list.append(len(xs))
+    
     np.savez_compressed(load_path,
                         vertex_positions=mesh_data.vertex_positions,
                         filename=mesh_data.filename,
@@ -56,7 +82,9 @@ def save_mesh_data(load_path, mesh_data):
                         face_areas=mesh_data.face_areas,
                         edge_index_to_halfedge_indices=mesh_data.edge_index_to_halfedge_indices,
                         face_index_to_halfedge_indices=mesh_data.face_index_to_halfedge_indices,
-                        vertex_to_half_edges=mesh_data.vertex_to_half_edges,
+                        #vertex_to_half_edges=mesh_data.vertex_to_half_edges, # New Version of savez_compressed does not except inhomogeneous list shape
+                        vertex_to_half_edges_flat=vertex_to_half_edges_flat,
+                        vertex_to_half_edges_flat_length_list = length_list,
                         half_edge_features=mesh_data.half_edge_features)
 
 
